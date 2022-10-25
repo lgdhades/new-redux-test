@@ -3,6 +3,8 @@ import { configureStore, createAction } from '@reduxjs/toolkit'
 import { Action, combineReducers, Dispatch } from 'redux'
 import { createRoot } from 'react-dom/client'
 import { Provider, useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { time } from 'console'
 
 // A simple counter that keep incrementing automatically by 1 every second ,
 // and has 2 buttons to manually increment or decrement the counter.
@@ -55,6 +57,10 @@ const App = () => {
       alert('Counter reached to 20')
     }
   }
+
+  useEffect(() => {
+    console.log(Date.now())
+  }, [])
 
   return (
     <>

@@ -15,5 +15,5 @@ Specifically, please consider doing the following, in no particular order:
  9) Use monospace font for all text on the page.
  10) Create unit tests for increment, decrement and counter functions.
  11) Create package configuration that could be used to serve the page.
- 12) Change App to log the timestamp of when that component did mount.
+ 12) Change App to log the timestamp of when that component did mount. >>>> DONE
 */
