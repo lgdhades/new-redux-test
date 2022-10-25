@@ -8,7 +8,7 @@ Specifically, please consider doing the following, in no particular order:
  2) Provide comments for each of the functions. >>>> DONE
  3) Provide a general comment for the entire program, describing its purpose. >>>>> DONE
  4) Replace type any with something more specific >>>> DONE
- 5) Do not allow timer to increment counter past 10.
+ 5) Do not allow timer to increment counter past 10. >>>> DONE
  6) Trigger an alert when counter reaches 20.
  7) If counter goes below zero, make timer decrement rather than increment it.
  8) Add a drop-down to select increment and decrement step between 1, 2, and 3.

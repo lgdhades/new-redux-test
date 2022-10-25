@@ -27,7 +27,11 @@ const root = combineReducers({ counter })
 
 // Increments the counter automatically by 1 every second
 const timer = ({ dispatch }: { dispatch: Dispatch<Action> }) => {
-  setInterval(() => dispatch(increment()), 1000)
+  setInterval(() => {
+    if (ReduxStore.getState().counter < 10) {
+      dispatch(increment())
+    }
+  }, 1000)
 
   return (next: (arg0: Action) => void) => (action: Action) => {
     next(action)
