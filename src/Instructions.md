@@ -10,7 +10,7 @@ Specifically, please consider doing the following, in no particular order:
  4) Replace type any with something more specific >>>> DONE
  5) Do not allow timer to increment counter past 10. >>>> DONE
  6) Trigger an alert when counter reaches 20. >>> DONE
- 7) If counter goes below zero, make timer decrement rather than increment it.
+ 7) If counter goes below zero, make timer decrement rather than increment it. >>> DONE
  8) Add a drop-down to select increment and decrement step between 1, 2, and 3.
  9) Use monospace font for all text on the page.
  10) Create unit tests for increment, decrement and counter functions.
