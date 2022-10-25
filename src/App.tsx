@@ -49,11 +49,18 @@ const App = () => {
     (state: ReturnType<typeof ReduxStore.getState>) => state.counter
   )
 
+  const handleIncrmenet = () => {
+    dispatch(increment())
+    if (counter === 19) {
+      alert('Counter reached to 20')
+    }
+  }
+
   return (
     <>
       <button onClick={() => dispatch(decrement())}>-</button>
       {counter}
-      <button onClick={() => dispatch(increment())}>+</button>
+      <button onClick={handleIncrmenet}>+</button>
     </>
   )
 }
