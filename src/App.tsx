@@ -1,33 +1,37 @@
 // App Description:
-// A simple counter that keep incrementing automatically by 1 every second ,
-// and has 2 buttons to manually increment or decrement the counter.
-// if you used the buttons to increment or decerment the counter manaually,
-// the counter will keep incrementing automatically by 1 after you finish using the buttons
-// and it will start from the last number the counter has now.
+// A simple counter that has a timer to increment/decrement it automatically
+// based on the value of the dropdown menu.
+// It has also manual buttons to increment/decrement it manually,
+// and it has some rules implemented in certain cases.
 
 import './App.css'
+import { useEffect } from 'react'
 import { configureStore, createAction } from '@reduxjs/toolkit'
 import { Action, combineReducers, Dispatch } from 'redux'
-import { createRoot } from 'react-dom/client'
-import { Provider, useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 const increment = createAction('increment')
 const decrement = createAction('decrement')
 
-// Increment the counter by 1 if increment action dispatched,
-// decrement the counter by 1 if decrement action dispatched,
-// otherwise leave the counter number as is.
+let addedNumber = 1
+const getMenuNumber = (value: string) => {
+  addedNumber = Number(value)
+}
+
+// Increment the counter by the value of "addedNumber" variable if increment action dispatched,
+// decrement the counter by the value of "addedNumber" variable if decrement action dispatched,
+// otherwise leaves the counter number as is.
 const counter = (startNumber = 0, action: Action) =>
   increment.match(action)
-    ? startNumber + 1
+    ? startNumber + addedNumber
     : decrement.match(action)
-    ? startNumber - 1
+    ? startNumber - addedNumber
     : startNumber
 
 const root = combineReducers({ counter })
 
-// Increments the counter automatically by 1 every second
+// Increments the counter automatically every second if the counter value was between 0 & 9
+// and decrements the counter automatically every second if the counter value was below 0.
 const timer = ({ dispatch }: { dispatch: Dispatch<Action> }) => {
   setInterval(() => {
     if (
@@ -56,6 +60,7 @@ const App = () => {
     (state: ReturnType<typeof ReduxStore.getState>) => state.counter
   )
 
+  // shows alert when the counter reaches to 20
   const handleIncrmenet = () => {
     dispatch(increment())
     if (counter === 19) {
@@ -72,6 +77,13 @@ const App = () => {
       <button onClick={() => dispatch(decrement())}>-</button>
       {counter}
       <button onClick={handleIncrmenet}>+</button>
+      <div>
+        <select onChange={(e) => getMenuNumber(e.target.value)}>
+          <option value='1'>1</option>
+          <option value='2'>2</option>
+          <option value='3'>3</option>
+        </select>
+      </div>
     </>
   )
 }
